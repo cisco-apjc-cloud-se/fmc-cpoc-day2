@@ -1,6 +1,6 @@
 ### Target Device ###
 data "fmc_devices" "dmz_group" {
-    name = "CPOC-FTDv" # Group?
+    name = "CPOC-FTDv-1" # Group?
 }
 
 ### Assign ACL Policy to Device ###
