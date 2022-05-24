@@ -17,9 +17,9 @@ terraform {
 ### FMC Provider ###
 provider "fmc" {
   # Configuration options
-  fmc_username              = var.fmc_user
-  fmc_password              = var.fmc_password
-  fmc_host                  = var.fmc_server
+  fmc_username              = var.fmc_user      # Passed from Workspace Variable
+  fmc_password              = var.fmc_password  # Passed from Workspace Variable
+  fmc_host                  = var.fmc_server    # Passed from Workspace Variable
   fmc_insecure_skip_verify  = true
 }
 
