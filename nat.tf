@@ -4,10 +4,6 @@ resource "fmc_ftd_nat_policies" "dmz_nat" {
   description = "CPOC DMZ NAT Policy built by Terraform"
 }
 
-data "fmc_network_objects" "any_ipv4" {
-  name = "any-ipv4"
-}
-
 resource "fmc_ftd_manualnat_rules" "internet_snat" {
   nat_policy = fmc_ftd_nat_policies.dmz_nat.id
   description = "Internet Egress Source NAT to Interface"

@@ -1,3 +1,8 @@
+### Common Objects ###
+data "fmc_network_objects" "any_ipv4" {
+  name = "any-ipv4"
+}
+
 ### Host Objects ###
 resource "fmc_host_objects" "iks1_ingress_int" {
     name        = "iks1_ingress_int"

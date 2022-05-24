@@ -66,3 +66,44 @@ resource "fmc_access_rules" "inside_inside" {
     }
   }
 }
+
+resource "fmc_access_rules" "internet_ingress" {
+  acp                 = fmc_access_policies.dmz_acp.id
+  section             = "mandatory"
+  name                = "Internet-IKS-IngressLB"
+  action              = "allow"
+  enabled             = true
+  # enable_syslog = true
+  # syslog_severity = "alert"
+  send_events_to_fmc  = true
+  log_files           = false
+  log_end             = true
+  # ips_policy = data.fmc_ips_policies.ips_policy.id
+  # syslog_config = data.fmc_syslog_alerts.syslog_alert.id
+  # new_comments = [ "New", "comment" ]
+
+  source_zones {
+    source_zone {
+      id    = data.fmc_security_zones.internet.id
+      type  = data.fmc_security_zones.internet.type
+    }
+  }
+  destination_zones {
+    destination_zone {
+      id    = data.fmc_security_zones.inside.id
+      type  = data.fmc_security_zones.inside.type
+    }
+  }
+  source_networks {
+    source_network {
+      id = data.fmc_network_objects.any_ipv4.id
+      type =  data.fmc_network_objects.any_ipv4.type
+    }
+  }
+  destination_networks {
+    destination_network {
+      id = fmc_host_objects.iks1_ingress_pub.id
+      type = fmc_host_objects.iks1_ingress_pub.type
+    }
+  }
+}
