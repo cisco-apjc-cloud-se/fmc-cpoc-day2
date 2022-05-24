@@ -4,14 +4,16 @@ resource "fmc_ftd_nat_policies" "dmz_nat" {
     description = "CPOC DMZ NAT Policy built by Terraform"
 }
 
-data "fmc_network_objects" "n_100_64_0_0_16" {
-    name = "N-100.64.0.0-16"
+data "fmc_network_objects" "any_ipv4" {
+    name = "any-ipv4"
 }
 
-resource "fmc_ftd_autonat_rules" "internt_snat" {
+resource "fmc_ftd_manualnat_rules" "internet_snat" {
     nat_policy = fmc_ftd_nat_policies.dmz_nat.id
     description = "Internet Egress Source NAT to Interface"
     nat_type = "dynamic"
+    section = "before_auto"
+    target_index = 1
     source_interface {
         id = data.fmc_security_zones.inside.id
         type = data.fmc_security_zones.inside.type
@@ -20,19 +22,10 @@ resource "fmc_ftd_autonat_rules" "internt_snat" {
         id = data.fmc_security_zones.internet.id
         type = data.fmc_security_zones.internet.type
     }
-    original_network {
-        id = data.fmc_network_objects.n_100_64_0_0_16.id
-        type = data.fmc_network_objects.n_100_64_0_0_16.type
+    original_source {
+        id = data.fmc_network_objects.any_ipv4.id
+        type = data.fmc_network_objects.any_ipv4.type
     }
-    translated_network_is_destination_interface = true
+    interface_in_translated_source = true
     translate_dns = false
-    # pat_options {
-    #     pat_pool_address {
-    #         id = data.fmc_network_objects.private.id
-    #         type = data.fmc_network_objects.private.type
-    #     }
-    #     extended_pat_table = true
-    #     round_robin = true
-    # }
-    # ipv6 = true
 }
