@@ -106,4 +106,10 @@ resource "fmc_access_rules" "internet_ingress" {
       type = fmc_host_objects.iks1_ingress_pub.type
     }
   }
+  destination_ports {
+    destination_port {
+      id = data.fmc_port_objects.http.id
+      type =  data.fmc_port_objects.http.type
+    }
+  }
 }

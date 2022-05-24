@@ -3,6 +3,10 @@ data "fmc_network_objects" "any_ipv4" {
   name = "any-ipv4"
 }
 
+data "fmc_port_objects" "http" {
+    name = "http"
+}
+
 ### Host Objects ###
 resource "fmc_host_objects" "iks1_ingress_int" {
     name        = "iks1_ingress_int"
