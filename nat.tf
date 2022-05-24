@@ -25,6 +25,7 @@ resource "fmc_ftd_autonat_rules" "internt_snat" {
         type = data.fmc_network_objects.any_ipv4.type
     }
     translated_network_is_destination_interface = true
+    translate_dns = false
     # pat_options {
     #     pat_pool_address {
     #         id = data.fmc_network_objects.private.id
