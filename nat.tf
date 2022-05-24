@@ -4,8 +4,8 @@ resource "fmc_ftd_nat_policies" "dmz_nat" {
     description = "CPOC DMZ NAT Policy built by Terraform"
 }
 
-data "fmc_network_objects" "any_ipv4" {
-    name = "any-ipv4"
+data "fmc_network_objects" "n_100_64_0_0_16" {
+    name = "N-100.64.0.0-16"
 }
 
 resource "fmc_ftd_autonat_rules" "internt_snat" {
@@ -21,8 +21,8 @@ resource "fmc_ftd_autonat_rules" "internt_snat" {
         type = data.fmc_security_zones.internet.type
     }
     original_network {
-        id = data.fmc_network_objects.any_ipv4.id
-        type = data.fmc_network_objects.any_ipv4.type
+        id = data.fmc_network_objects.n_100_64_0_0_16.id
+        type = data.fmc_network_objects.n_100_64_0_0_16.type
     }
     translated_network_is_destination_interface = true
     translate_dns = false
