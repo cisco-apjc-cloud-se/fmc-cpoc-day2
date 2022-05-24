@@ -26,9 +26,10 @@ resource "fmc_ftd_manualnat_rules" "internet_snat" {
     id = data.fmc_network_objects.any_ipv4.id
     type = data.fmc_network_objects.any_ipv4.type
   }
-  translated_source {
-    id = data.fmc_security_zones.internet.id
-    type = data.fmc_security_zones.internet.type
-  }
+  # translated_source {
+  #   id = data.fmc_security_zones.internet.id
+  #   type = data.fmc_security_zones.internet.type
+  # }
+  interface_in_translated_source = true
   translate_dns = false
 }
