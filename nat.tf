@@ -32,4 +32,5 @@ resource "fmc_ftd_manualnat_rules" "internet_snat" {
   # }
   interface_in_translated_source = true
   translate_dns = false
+  unidirectional = true
 }
