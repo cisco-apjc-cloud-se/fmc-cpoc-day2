@@ -1,5 +1,5 @@
 ### New Access Policy ###
-resource "fmc_access_policies" "dmz-acp" {
+resource "fmc_access_policies" "dmz_acp" {
   name = "CPOC DMZ Access Policy built by Terraform"
   default_action = "block" # permit
   # default_action_base_intrusion_policy_id = data.fmc_ips_policies.ips_policy.id
@@ -9,8 +9,8 @@ resource "fmc_access_policies" "dmz-acp" {
   # default_action_syslog_config_id  = data.fmc_syslog_alerts.syslog_alert.id
 }
 
-resource "fmc_access_rules" "inside-internet" {
-  acp                 = fmc_access_policies.dmz-acp.id
+resource "fmc_access_rules" "inside_internet" {
+  acp                 = fmc_access_policies.dmz_acp.id
   section             = "mandatory"
   name                = "Inside-Internet"
   action              = "allow"
@@ -38,8 +38,8 @@ resource "fmc_access_rules" "inside-internet" {
   }
 }
 
-resource "fmc_access_rules" "inside-inside" {
-  acp                 = fmc_access_policies.dmz-acp.id
+resource "fmc_access_rules" "inside_inside" {
+  acp                 = fmc_access_policies.dmz_acp.id
   section             = "mandatory"
   name                = "Inside-Inside"
   action              = "allow"
