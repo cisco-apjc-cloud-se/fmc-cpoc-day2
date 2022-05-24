@@ -50,13 +50,13 @@ resource "fmc_access_policies" "dmz-acp" {
 resource "fmc_access_rules" "inside-internet" {
   acp                 = fmc_access_policies.dmz-acp.id
   section             = "mandatory"
-  name                = "Allow outbound Internet access from Inside zone"
+  name                = "Inside-Internet"
   action              = "allow"
   enabled             = true
   # enable_syslog = true
   # syslog_severity = "alert"
   send_events_to_fmc  = true
-  log_files           = true
+  log_files           = false
   log_end             = true
   # ips_policy = data.fmc_ips_policies.ips_policy.id
   # syslog_config = data.fmc_syslog_alerts.syslog_alert.id
@@ -79,7 +79,7 @@ resource "fmc_access_rules" "inside-internet" {
 resource "fmc_access_rules" "inside-inside" {
   acp                 = fmc_access_policies.dmz-acp.id
   section             = "mandatory"
-  name                = "Allow traffic routed back to Inside zone"
+  name                = "Inside-Inside"
   action              = "allow"
   enabled             = true
   # enable_syslog = true
