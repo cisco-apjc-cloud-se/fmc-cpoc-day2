@@ -102,8 +102,8 @@ resource "fmc_access_rules" "internet_ingress" {
   }
   destination_networks {
     destination_network {
-      id = fmc_host_objects.iks1_ingress_pub.id
-      type = fmc_host_objects.iks1_ingress_pub.type
+      id = fmc_host_objects.iks1_ingress_int.id
+      type = fmc_host_objects.iks1_ingress_int.type
     }
   }
   destination_ports {
