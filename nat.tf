@@ -12,8 +12,8 @@ resource "fmc_ftd_manualnat_rules" "internet_snat" {
   nat_policy = fmc_ftd_nat_policies.dmz_nat.id
   description = "Internet Egress Source NAT to Interface"
   nat_type = "dynamic"
-  section = "before_auto"
-  target_index = 0
+  section = "after_auto"
+  target_index = 1
   source_interface {
     id = data.fmc_security_zones.inside.id
     type = data.fmc_security_zones.inside.type
