@@ -4,7 +4,7 @@ data "fmc_network_objects" "any_ipv4" {
 }
 
 data "fmc_port_objects" "http" {
-    name = "http"
+    name = "HTTP"
 }
 
 ### Host Objects ###
