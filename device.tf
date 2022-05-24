@@ -32,4 +32,11 @@ resource "fmc_ftd_deploy" "deploy" {
     device = data.fmc_devices.dmz.id
     ignore_warning = true
     force_deploy = true
+
+    depends_on = [
+        fmc_access_policies.dmz_acp,
+        fmc_ftd_nat_policies.dmz_nat
+        # fmc_ftd_manualnat_rules.internet_snat
+        # fmc_ftd_manualnat_rules.iks1_ingress
+    ]
 }
