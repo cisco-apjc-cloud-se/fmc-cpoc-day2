@@ -38,7 +38,7 @@ resource "fmc_ftd_manualnat_rules" "internet_snat" {
 resource "fmc_ftd_manualnat_rules" "iks1_ingress" {
   nat_policy = fmc_ftd_nat_policies.dmz_nat.id
   description = "1:1 NAT for IKS K8S Ingress Loadbalancer"
-  nat_type = "dynamic"
+  nat_type = "static"
   section = "after_auto"
   # target_index = 1
   source_interface {
