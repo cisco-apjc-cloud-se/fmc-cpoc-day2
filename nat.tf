@@ -50,12 +50,12 @@ resource "fmc_ftd_manualnat_rules" "iks1_ingress" {
     type = data.fmc_security_zones.internet.type
   }
   original_source {
-    id = data.fmc_host_objects.iks1_ingress_int.id
-    type = data.fmc_host_objects.iks1_ingress_int.type
+    id = fmc_host_objects.iks1_ingress_int.id
+    type = fmc_host_objects.iks1_ingress_int.type
   }
   translated_source {
-    id = data.fmc_host_objects.iks1_ingress_pub.id
-    type = data.fmc_host_objects.iks1_ingress_pub.type
+    id = fmc_host_objects.iks1_ingress_pub.id
+    type = fmc_host_objects.iks1_ingress_pub.type
   }
   interface_in_translated_source = false
   translate_dns = false
