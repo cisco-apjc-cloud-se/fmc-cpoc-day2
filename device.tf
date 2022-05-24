@@ -30,6 +30,6 @@ resource "fmc_policy_devices_assignments" "dmz_nat" {
 ### Trigger Deploy ###
 resource "fmc_ftd_deploy" "deploy" {
     device = data.fmc_devices.dmz.id
-    ignore_warning = false
-    force_deploy = false
+    ignore_warning = true
+    force_deploy = true
 }
