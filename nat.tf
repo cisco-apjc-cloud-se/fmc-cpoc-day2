@@ -13,7 +13,7 @@ resource "fmc_ftd_manualnat_rules" "internet_snat" {
   description = "Internet Egress Source NAT to Interface"
   nat_type = "dynamic"
   section = "before_auto"
-  target_index = 99
+  target_index = 0
   source_interface {
     id = data.fmc_security_zones.inside.id
     type = data.fmc_security_zones.inside.type
