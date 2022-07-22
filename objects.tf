@@ -10,7 +10,7 @@ data "fmc_port_objects" "http" {
 ### Host Objects ###
 resource "fmc_host_objects" "iks1_ingress_int" {
     name        = "iks1_ingress_int"
-    value       = "100.64.64.26"
+    value       = "100.64.64.25"
     description = "IKS Cluster 1 - K8S Ingress Loadbalancer Inside IP"
 }
 
