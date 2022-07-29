@@ -39,5 +39,7 @@ resource "fmc_ftd_deploy" "deploy" {
         fmc_ftd_manualnat_rules.internet_snat,
         fmc_ftd_manualnat_rules.iks1_ingress,
         fmc_access_rules.internet_ingress,
+        fmc_host_objects.iks1_ingress_int,
+        fmc_host_objects.iks1_ingress_pub
     ]
 }
